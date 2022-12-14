@@ -1,13 +1,20 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { StatusMonitorModule } from 'nest-status-monitor';
+import { ApiConfigService } from 'src/common/c-services/api-config.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `env/${process.env.NODE_ENV}.env`,
+    }),
+
     StatusMonitorModule.setUp({
       pageTitle: 'Perfomance Monitoring Page',
-      port: 3000,
+      port: ApiConfigService.appConfig().port,
       path: '/status',
       ignoreStartsWith: '/health/alive',
       spans: [
