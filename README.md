@@ -1,73 +1,41 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Specifications: 
+Use Docker compose for containerization. Add necessary environment variables and CLI commands
+Use Yarn for Package management
+Configure TypeScript, and Prettier in VSCode
+Add separate configuration file for each environment and edition
+Explore the Linting rules of various technology companies and choose the best ESLint or SonarJS Configuration. Also, prepare the VSCode Configuration for the same.
+Airbnb
+ESLint
+Facebook
+Google
+React
+Shopify
+Package.json Configuration:
+Add CLI commands to run ESLint or SonarJS check
+Add CLI commands to build and start application in different environments (Development, Quality, Production) and different product editions (Cloud, Private deployment – On-premise, BTP, Azure, Google Cloud, AWS). Use PM2 for production process manager in cluster mode. Use Nodemon for Developer environments.
+Add CLI commands to run unit tests (Ponicode or Jest)
+Add CLI commands to run Nest Status Monitor (nest-status-monitor)
+Use pre-commit to encourage consistency and quality of the code repository
+Use lint-staged to run before committing the code.
+Explore and configure the essential plugins required for TypeScript developers –
+TypeScript Hero (to write cleaner and readable code)
+TypeScript Toolbox (to generate pre-existing code)
+TypeScript Importer (for easy import of node modules)
+Ponicode (for writing unit tests)
+CodeMetrics (for computing complexity of TS Code)
+Codecrumbs (Code knowledge management)
+MoveTS (To update relative imports of files automatically)
+DotEnv (To manage ENV files)
+Better Comments (for comments management)
+Prettier (code formatting)
+Visual Studio IntelliCode (AI-assisted code completion)
+GitLens
+GitGraph
+GitHub Copilot (For pair programming)
+Filename convention - camelCase should never be used. This leaves snake_case and kebab-case.
+Set HTTP Status codes and Headers (Link) - https://docs.nestjs.com/exception-filters
+Configure Logging (Nestjs Logger)
+Use BDD-styled TDD for creating unit tests using Jest. (LinkImplement end-to-end or black box testing using supertest (Link)
+Frame the folder structure based on Domain-driven Design, Four Layer Architecture, and Clean code architecture (Link1, Link2)
+ Compare and contrast the standard and mono-repo modes. Choose the best Workspace methodology (Link)
+Enumerate and implement the strategies to improve the Developer Experience of TypeScript developers.
