@@ -1,9 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { StatusMonitorModule } from 'nest-status-monitor';
-import { ApiConfigService } from 'src/common/c-services/api-config.service';
+import { ApiConfigService } from '../../common/c-services/api-config.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { LoggerMiddleware } from '../../common/middlewares/logger.mw';
+import { CommonModule } from '../../common/common.module';
+import { MiddlewareConsumer } from '@nestjs/common/interfaces';
+import { AuthModule } from './auth/auth.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,7 +19,7 @@ import { AppService } from './app.service';
     }),
 
     StatusMonitorModule.setUp({
-      pageTitle: 'Perfomance Monitoring Page',
+      pageTitle: 'Perfomance Monitoring Page2',
       port: ApiConfigService.appConfig().port,
       path: '/status',
       ignoreStartsWith: '/health/alive',
@@ -41,8 +47,16 @@ import { AppService } from './app.service';
       },
       healthChecks: [],
     }),
+    CommonModule.forRoot(),
+    AuthModule,
+    PrismaModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}

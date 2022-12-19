@@ -47,6 +47,8 @@ export class ApiConfigService {
   public static appConfig() {
     return {
       port: this.getNumber('PORT'),
+      env: this.getString('APP_ENV'),
+      database: this.getString('DATABASE_URL'),
     };
   }
 
