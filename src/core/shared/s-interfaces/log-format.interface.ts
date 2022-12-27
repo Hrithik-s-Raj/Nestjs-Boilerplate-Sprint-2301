@@ -1,5 +1,3 @@
-import { Request } from 'express';
-
 export interface SuccessLog {
   method: string;
   response_time: string;
