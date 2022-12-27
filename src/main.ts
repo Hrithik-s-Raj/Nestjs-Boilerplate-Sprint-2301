@@ -1,9 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
-
-import helmet from 'helmet';
 import { ApiConfigService } from './common/c-services/api-config.service';
-import { CommonModule } from './common/common.module';
 import { HttpCatchException } from './common/exception/http-catch.exception';
 import { AppModule } from './core/modules/app.module';
 import { rateLimit } from 'express-rate-limit';

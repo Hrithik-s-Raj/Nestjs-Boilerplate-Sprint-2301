@@ -1,0 +1,34 @@
+version: "3"
+services: 
+  nest-app:
+    build: .
+    volumes:
+    - ./:/app
+    - /app/node_modules
+    environment:
+    - NODE_ENV=dev
+    command: yarn start:dev
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - barberoza
+  test-db:
+    image: postgres:13
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - barberoza
+networks:
+  barberoza:
+
+  

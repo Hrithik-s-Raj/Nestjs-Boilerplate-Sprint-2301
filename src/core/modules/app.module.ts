@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
     }),
 
     StatusMonitorModule.setUp({
-      pageTitle: 'Perfomance Monitoring Page2',
+      pageTitle: 'Perfomance Monitoring Page',
       port: ApiConfigService.appConfig().port,
       path: '/status',
       ignoreStartsWith: '/health/alive',
