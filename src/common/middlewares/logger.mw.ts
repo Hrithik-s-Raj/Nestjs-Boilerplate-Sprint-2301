@@ -5,14 +5,14 @@ import {
   WINSTON_MODULE_PROVIDER,
   utilities as nestWinstonModuleUtilities,
 } from 'nest-winston';
-import { Logger, transports, format } from 'winston';
+import { Logger, transports, format, createLogger } from 'winston';
 import { Request, Response } from 'express';
 
 import { ApiConfigService } from '../c-services/api-config.service';
 import { SuccessLog } from '../../core/shared/s-interfaces/log-format.interface';
+import { MongoDB, MongoDBConnectionOptions } from 'winston-mongodb';
 
 const baseLogPath = path.resolve(__dirname, '../../../logs');
-
 // Logger level
 const customLoggerLevel = {
   crit: 0,
@@ -26,6 +26,7 @@ const customLoggerLevel = {
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
   static options: any;
+  static dbinfo;
 
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
@@ -68,12 +69,43 @@ export class LoggerMiddleware implements NestMiddleware {
             nestWinstonModuleUtilities.format.nestLike('Nest'),
           ),
         }),
+
         new WinstonDailyRotate({
           filename: `${baseLogPath}/errors/error.%DATE%.log`,
           datePattern: 'YYYYMMDD',
           json: true,
           maxSize: '1m',
           level: 'warn',
+        }),
+
+        new MongoDB({
+          level: 'warn',
+          metaKey: 'metadata',
+          db: 'mongodb+srv://winston:winston@8943921454@cluster0.vwz7hxx.mongodb.net/?retryWrites=true&w=majority',
+          name: 'mongodb',
+          collection: 'log-error',
+          decolorize: true,
+          tryReconnect: true,
+          storeHost: true,
+          options: {
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+          },
+        }),
+
+        new MongoDB({
+          level: 'debug',
+          metaKey: 'metadata',
+          db: 'mongodb+srv://winston:winston@8943921454@cluster0.vwz7hxx.mongodb.net/?retryWrites=true&w=majority',
+          name: 'mongodb',
+          collection: 'log-debug',
+          decolorize: true,
+          tryReconnect: true,
+          storeHost: true,
+          options: {
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+          },
         }),
         new WinstonDailyRotate({
           filename: `${baseLogPath}/combined/app-combined.%DATE%.log`,
