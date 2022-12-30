@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-k16s
+spec:
+  selector:
+    matchLabels:
+      app: nestjs-k16s
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nestjs-k16s
+    spec:
+      containers:
+        - name: nestjs-k16s
+          image: hrithiksraj/nestjs-k16s
+          ports:
+            - containerPort: 8001
