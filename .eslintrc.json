@@ -23,7 +23,14 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+
       "rules": {}
     },
     {
