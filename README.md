@@ -1,4 +1,5 @@
-Specifications: <br>
+Specifications:
+ <br>
 Use Docker compose for containerization. Add necessary environment variables and CLI commands<br>
 Use Yarn for Package management<br>
 Configure TypeScript, and Prettier in VSCode<br>
